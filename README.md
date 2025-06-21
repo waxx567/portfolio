@@ -56,16 +56,16 @@ npm install
 ### Running the Project
 
 npm run dev
-Open http://localhost:3000 in your browser to view the project.
+Open [this link](http://localhost:3000) in your browser to view the project.
 
 - TypeScript
 - AceternityUI
 - Sentry
 
 Image credits:
-projects.jpg: Photo by Markus Spiske: https://www.pexels.com/photo/close-up-photo-of-codes-1089440/
-salesforce.jpg: Photo by Eric Thurber: https://www.pexels.com/photo/time-lapse-photo-of-city-during-night-3688579/
-portfolio.jpg: Photo by Lee Campbell: https://www.pexels.com/photo/imac-aluminum-on-table-115655/
+projects.jpg: Photo by Markus Spiske: [see photo](https://www.pexels.com/photo/close-up-photo-of-codes-1089440/)
+salesforce.jpg: Photo by Eric Thurber: [see photo](https://www.pexels.com/photo/time-lapse-photo-of-city-during-night-3688579/)
+portfolio.jpg: Photo by Lee Campbell: [see photo](https://www.pexels.com/photo/imac-aluminum-on-table-115655/)
 
 Created with much assistance from:
 [Video](https://www.youtube.com/watch?v=FTH6Dn3AyIQ&list=PLs4GO2nEDaoc_OBIdmCcVJSV_rn0FiARD)
