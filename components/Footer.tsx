@@ -11,7 +11,7 @@ const Footer = () => {
         <h1 className='heading lg:max-w-[45vw]'>
           Do you need a <span className='text-purple'>power player</span> to compliment your next project?
         </h1>
-        <p className='text-white-200 md:mt-10 my-5 text-center'>I can bring your dream to life on time and on-budget and help you achieve your goals.
+        <p className='text-white-200 md:mt-10 my-5 text-center'>I can bring your dream to life on time and on-budget, and help you achieve your goals.
         </p>
         <a href='mailto:feedback@fivefiftyfive.io'>
           <MagicButton
