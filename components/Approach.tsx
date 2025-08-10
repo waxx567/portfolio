@@ -4,6 +4,16 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
 
+/**
+ * This component renders a section with a heading and three cards.
+ *
+ * Each card describes a phase of the web development process, with a title, icon, and description.
+ * The cards also contain a {@link CanvasRevealEffect} component for visual interest.
+ *
+ * The component uses the {@link https://www.framer.com/docs/animate-presence/|Animate Presence} library to animate the cards in and out.
+ *
+ * @returns A React component that renders a section with a heading and three cards.
+ */
 const Approach = () => {
   return (
     <section className="w-full py-20">
@@ -52,6 +62,24 @@ const Approach = () => {
   );
 }
 
+/**
+ * A reusable component for rendering cards with a title, icon, and description.
+ * The card also contains a {@link CanvasRevealEffect} component for visual interest.
+ *
+ * @param title The title of the card.
+ * @param icon The icon to render in the card.
+ * @param children The children to render inside the card (optional).
+ * @param description The description to render in the card.
+ *
+ * @example
+ * <Card
+ *   title="My Card"
+ *   icon={<Icon>icon</Icon>}
+ *   description="This is a test card"
+ * >
+ *   <CanvasRevealEffect />
+ * </Card>
+ */
 const Card = ({
   title,
   icon,
@@ -101,6 +129,14 @@ const Card = ({
     </div>
   );
 };
+
+/**
+ * AceternityIcon component renders a spinning button with a conic gradient background.
+ * The button displays an order string centered inside it.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.order - The order string to display inside the button
+ */
 
 const AceternityIcon = ({ order }: {order: string}) => {
   return (
