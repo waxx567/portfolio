@@ -3,6 +3,20 @@ import { InfiniteMovingCards } from './ui/InfiniteMovingCards'
 import { testimonials } from '@/data'
 import { companies } from '@/data'
 
+/**
+ * A component that renders a section with a heading and some cards.
+ *
+ * The section has an id of "testimonials" and a class of "py-20", and
+ * contains a heading with a class of "heading" and a span with a class
+ * of "text-purple". The heading is followed by an InfiniteMovingCards
+ * component with a direction of "right" and a speed of "slow", and a
+ * div with a class of "flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10". The div contains a series of
+ * images with classes of "md:w-10 w-5" and "md:w-24 w-20", which are
+ * rendered in a loop from the companies array.
+ *
+ * @returns A React component that renders a section with a heading and
+ * some cards.
+ */
 const Clients = () => {
   return (
     <div className='py-20' id="testimonials">
