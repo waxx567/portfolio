@@ -4,6 +4,21 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+/**
+ * A reusable component for rendering a container with a perspective effect.
+ * The component uses the Framer Motion library to animate the container and its children.
+ *
+ * @param children The children to render inside the container.
+ * @param title The title to render in the perspective effect.
+ * @param href The href to render as a link.
+ * @param className The class name to add to the container.
+ * @param containerClassName The class name to add to the container of the perspective effect.
+ *
+ * @example
+ * <PinContainer>
+ *   <div>My card</div>
+ * </PinContainer>
+ */
 export const PinContainer = ({
   children,
   title,
@@ -21,9 +36,18 @@ export const PinContainer = ({
     "translate(-50%,-50%) rotateX(0deg)"
   );
 
+  /**
+   * Function to handle mouse enter event for the PinContainer component.
+   * This function changes the transform property of the container to give a perspective effect.
+   * The container is rotated 40deg and scaled to 0.8.
+   */
   const onMouseEnter = () => {
     setTransform("translate(-50%,-50%) rotateX(40deg) scale(0.8)");
   };
+  /**
+   * Function to handle mouse leave event for the PinContainer component.
+   * This function resets the transform property of the container to its original state.
+   */
   const onMouseLeave = () => {
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
   };
@@ -58,6 +82,16 @@ export const PinContainer = ({
     </Link>
   );
 };
+
+/**
+ * A component that renders a pin with a perspective effect.
+ *
+ * @param title The title of the pin.
+ * @param href The link of the pin.
+ *
+ * @example
+ * <PinPerspective title="Aceternity UI" href="https://twitter.com/mannupaaji" />
+ */
 
 export const PinPerspective = ({
   title,
