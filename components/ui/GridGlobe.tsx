@@ -7,6 +7,44 @@ const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
 });
 
+/**
+ * GridGlobe
+ *
+ * A interactive globe component with customizable colors and arcs.
+ *
+ * @param {Object} globeConfig - Globe configuration object.
+ * @param {number} globeConfig.pointSize - Size of the points on the globe.
+ * @param {string} globeConfig.globeColor - Color of the globe.
+ * @param {boolean} globeConfig.showAtmosphere - Show atmosphere on the globe.
+ * @param {string} globeConfig.atmosphereColor - Color of the atmosphere.
+ * @param {number} globeConfig.atmosphereAltitude - Altitude of the atmosphere.
+ * @param {string} globeConfig.emissive - Emissive color of the globe.
+ * @param {number} globeConfig.emissiveIntensity - Intensity of the emissive color.
+ * @param {number} globeConfig.shininess - Shininess of the globe.
+ * @param {string} globeConfig.polygonColor - Color of the polygons on the globe.
+ * @param {string} globeConfig.ambientLight - Color of the ambient light.
+ * @param {string} globeConfig.directionalLeftLight - Color of the directional light on the left side of the globe.
+ * @param {string} globeConfig.directionalTopLight - Color of the directional light on the top side of the globe.
+ * @param {string} globeConfig.pointLight - Color of the point light.
+ * @param {number} globeConfig.arcTime - Time it takes for an arc to traverse the globe.
+ * @param {number} globeConfig.arcLength - Length of the arc.
+ * @param {number} globeConfig.rings - Number of rings on the globe.
+ * @param {number} globeConfig.maxRings - Maximum number of rings on the globe.
+ * @param {Object} globeConfig.initialPosition - Initial position of the globe.
+ * @param {boolean} globeConfig.autoRotate - Auto rotate the globe.
+ * @param {number} globeConfig.autoRotateSpeed - Speed of the auto rotation.
+ * @param {Array} data - Array of arc data.
+ * @param {Object} data.start - Start position of the arc.
+ * @param {number} data.start.lat - Latitude of the start position.
+ * @param {number} data.start.lng - Longitude of the start position.
+ * @param {Object} data.end - End position of the arc.
+ * @param {number} data.end.lat - Latitude of the end position.
+ * @param {number} data.end.lng - Longitude of the end position.
+ * @param {number} data.arcAlt - Altitude of the arc.
+ * @param {string} data.color - Color of the arc.
+ *
+ * @returns {JSX.Element} - The interactive globe component.
+ */
 const GridGlobe = () => {
   const globeConfig = {
     pointSize: 4,
