@@ -3,6 +3,18 @@ import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+/**
+ * A component that renders a text effect with a generate animation.
+ * The component will generate the words of the given string and animate them with a blur effect.
+ *
+ * @param {string} words The string to generate the words from.
+ * @param {string} [className] The class name to add to the container.
+ * @param {boolean} [filter=true] Whether to apply a blur filter to the words.
+ * @param {number} [duration=0.5] The duration of the animation.
+ * @returns A JSX element that renders the text with the generate animation.
+ * @example
+ * <TextGenerateEffect words="Hello world!" />
+ */
 export const TextGenerateEffect = ({
   words,
   className,
