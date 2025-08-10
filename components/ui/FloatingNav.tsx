@@ -9,6 +9,27 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+/**
+ * A floating navigation component that renders a list of links at the top of the screen.
+ *
+ * The component listens for scroll events and shows/hides itself based on the scroll direction.
+ * If the scroll direction is up, the component will show.
+ * If the scroll direction is down, the component will hide.
+ *
+ * The component also sets `opacity` and `y` properties to animate the appearance/disappearance of the component.
+ *
+ * The component takes an array of objects with the shape of `{ name: string, link: string, icon?: JSX.Element }` as the `navItems` prop.
+ * The component also takes an optional `className` prop to add additional class names to the component.
+ *
+ * @example
+ * <FloatingNav
+ *   navItems={[
+ *     { name: "Home", link: "/" },
+ *     { name: "About", link: "/about" },
+ *     { name: "Contact", link: "/contact" },
+ *   ]}
+ * />
+ */
 export const FloatingNav = ({
   navItems,
   className,
