@@ -60,6 +60,44 @@ interface WorldProps {
 
 let numbersOfRings = [0];
 
+/**
+ * A Three.js globe component that renders a globe with lines and points on it.
+ * The globe is interactive and can be rotated and zoomed.
+ * The globe can also be configured to show atmosphere and ambient light.
+ * The globe can also be configured to start an animation of the lines and points.
+ *
+ * @param {{ globeConfig: GlobeConfig; data: Position[]; }} props
+ * The props object must contain a globeConfig property which is an object
+ * that contains the configuration for the globe.
+ * The props object must also contain a data property which is an array of
+ * objects that contain the data for the lines and points on the globe.
+ * Each object in the data array must contain the following properties:
+ * - startLat: The starting latitude of the line.
+ * - startLng: The starting longitude of the line.
+ * - endLat: The ending latitude of the line.
+ * - endLng: The ending longitude of the line.
+ * - arcAlt: The altitude of the line.
+ * - color: The color of the line.
+ * - order: The order of the line.
+ * The data array can also contain the following properties:
+ * - pointSize: The size of the points on the globe.
+ * - globeColor: The color of the globe.
+ * - showAtmosphere: A boolean that indicates whether to show atmosphere or not.
+ * - atmosphereColor: The color of the atmosphere.
+ * - atmosphereAltitude: The altitude of the atmosphere.
+ * - polygonColor: The color of the polygons on the globe.
+ * - ambientLight: The color of the ambient light.
+ * - directionalLeftLight: The color of the directional light on the left.
+ * - directionalTopLight: The color of the directional light on the top.
+ * - pointLight: The color of the point light.
+ * - arcTime: The time it takes to animate one arc.
+ * - arcLength: The length of the arc.
+ * - rings: The number of rings on the globe.
+ * - maxRings: The maximum number of rings on the globe.
+ * - initialPosition: The initial position of the globe.
+ * - autoRotate: A boolean that indicates whether to auto rotate the globe or not.
+ * - autoRotateSpeed: The speed of the auto rotation.
+ */
 export function Globe({ globeConfig, data }: WorldProps) {
   const [globeData, setGlobeData] = useState<
     | {
@@ -98,6 +136,11 @@ export function Globe({ globeConfig, data }: WorldProps) {
     }
   }, [globeRef.current]);
 
+/**
+ * Builds and updates the material properties for the globe.
+ * Ensures the globe's material is set with the specified color, emissive properties, emissive intensity, and shininess
+ * from the globe configuration. If a property is not provided, defaults are used.
+ */
   const _buildMaterial = () => {
     if (!globeRef.current) return;
 
@@ -164,6 +207,23 @@ export function Globe({ globeConfig, data }: WorldProps) {
     }
   }, [globeData]);
 
+/**
+ * Starts the globe animation by setting arcs, points, and rings data
+ * on the globe instance.
+ * 
+ * - Arcs are created between start and end latitudes and longitudes,
+ *   colored based on the data provided, with specified altitude,
+ *   stroke, dash length, gap, and animation time.
+ * 
+ * - Points are colored and merged based on the data, with a fixed
+ *   altitude and radius.
+ * 
+ * - Rings are set with color, maximum radius, propagation speed, and
+ *   repeat period based on defined properties.
+ * 
+ * This function does not execute if the globe reference is not set or
+ * if there is no globe data available.
+ */
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
 
@@ -230,6 +290,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
   );
 }
 
+/**
+ * Configures the WebGL renderer by setting the pixel ratio, size, and clear color.
+ * 
+ * - Sets the pixel ratio to match the device's pixel density for clearer visuals.
+ * - Adjusts the renderer size to fit the current viewport dimensions.
+ * - Sets a transparent clear color with a specific hexadecimal value.
+ * 
+ * This effect runs once on initial render and uses the `useThree` hook to access 
+ * the WebGL renderer and the current canvas size.
+ */
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
@@ -242,6 +312,25 @@ export function WebGLRendererConfig() {
   return null;
 }
 
+/**
+ * The World component is a React component that creates a Three.js scene
+ * containing a ThreeGlobe and OrbitControls. It is used to create a globe
+ * visualization.
+ *
+ * The World component takes a single prop, `globeConfig`, which is an object
+ * containing configuration options for the globe. The object must contain the
+ * following keys:
+ *
+ * - `ambientLight`: The color of the ambient light in the scene.
+ * - `directionalLeftLight`: The color of the directional light coming from
+ *   the left side of the scene.
+ * - `directionalTopLight`: The color of the directional light coming from
+ *   the top of the scene.
+ * - `pointLight`: The color of the point light in the scene.
+ *
+ * The World component will render a globe visualization with the specified
+ * lighting configuration.
+ */
 export function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
@@ -278,6 +367,18 @@ export function World(props: WorldProps) {
   );
 }
 
+/**
+ * Converts a hex color code to an RGB object.
+ *
+ * This function takes a hex string, which can be in shorthand (#RGB) or 
+ * full form (#RRGGBB), and converts it to an object containing the 
+ * red, green, and blue components as integers.
+ *
+ * @param hex - The hex color code string to convert.
+ * @returns An object with `r`, `g`, and `b` properties representing
+ *          the red, green, and blue color components, or null if the 
+ *          input is not a valid hex color code.
+ */
 export function hexToRgb(hex: string) {
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
@@ -294,6 +395,19 @@ export function hexToRgb(hex: string) {
     : null;
 }
 
+/**
+ * Generates an array of unique random numbers between the given min and max values.
+ *
+ * The function takes three parameters: the minimum value, the maximum value, and
+ * the count of numbers to generate. It returns an array of `count` unique random
+ * numbers between `min` and `max` (inclusive). If the range is too small to
+ * generate `count` unique numbers, the function will return fewer numbers.
+ *
+ * @param min - The minimum value of the range.
+ * @param max - The maximum value of the range.
+ * @param count - The count of numbers to generate.
+ * @returns An array of unique random numbers between `min` and `max`.
+ */
 export function genRandomNumbers(min: number, max: number, count: number) {
   const arr = [];
   while (arr.length < count) {
