@@ -3,6 +3,24 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
+/**
+ * A component that renders a scroller with infinite animation that moves cards
+ * horizontally based on the provided direction and speed. The animation can be
+ * paused on hover if the pauseOnHover prop is set to true.
+ *
+ * @param {{
+ *   items: {
+ *     quote: string;
+ *     name: string;
+ *     title: string;
+ *   }[];
+ *   direction?: "left" | "right";
+ *   speed?: "fast" | "normal" | "slow";
+ *   pauseOnHover?: boolean;
+ *   className?: string;
+ * }} props
+ * @returns {JSX.Element}
+ */
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
@@ -43,6 +61,11 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+  /**
+   * Sets the direction of the animation based on the given direction.
+   * If the direction is "left", the animation will play forwards.
+   * If the direction is "right", the animation will play in reverse.
+   */
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -58,6 +81,12 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+  /**
+   * Sets the speed of the animation based on the given speed.
+   * If the speed is "fast", the animation will take 20 seconds to complete.
+   * If the speed is "normal", the animation will take 40 seconds to complete.
+   * If the speed is "slow", the animation will take 80 seconds to complete.
+   */
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
