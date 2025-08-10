@@ -4,6 +4,17 @@ import MagicButton from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
+/**
+ * Hero component renders the main section of the page with spotlights,
+ * a grid background, and an introduction text. It includes a dynamic
+ * text effect and a call-to-action button.
+ *
+ * The component uses the Spotlight and TextGenerateEffect UI components
+ * for visual effects. Background colors and grid properties are adjusted
+ * for both light and dark themes.
+ *
+ * @returns A JSX element representing the hero section of the webpage.
+ */
 const Hero = () => {
   return (
     <div className="pb-20 pt-36">
