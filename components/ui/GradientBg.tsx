@@ -2,6 +2,27 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * A component that renders a gradient background with a moving pointer.
+ *
+ * @param {string} [gradientBackgroundStart=rgb(108, 0, 162)] - The starting color of the gradient background.
+ * @param {string} [gradientBackgroundEnd=rgb(0, 17, 82)] - The ending color of the gradient background.
+ * @param {string} [firstColor=18, 113, 255] - The color of the first gradient.
+ * @param {string} [secondColor=221, 74, 255] - The color of the second gradient.
+ * @param {string} [thirdColor=100, 220, 255] - The color of the third gradient.
+ * @param {string} [fourthColor=200, 50, 50] - The color of the fourth gradient.
+ * @param {string} [fifthColor=180, 180, 50] - The color of the fifth gradient.
+ * @param {string} [pointerColor=140, 100, 255] - The color of the pointer.
+ * @param {string} [size=80%] - The size of the gradients and the pointer.
+ * @param {string} [blendingValue=hard-light] - The blending value of the gradients and the pointer.
+ * @param {React.ReactNode} [children] - The children of the component.
+ * @param {string} [className] - The class name to add to the container.
+ * @param {boolean} [interactive=true] - Whether the pointer is interactive.
+ * @param {string} [containerClassName] - The class name to add to the container.
+ * @returns A JSX element that renders a gradient background with a moving pointer.
+ * @example
+ * <BackgroundGradientAnimation />
+ */
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
   gradientBackgroundEnd = "rgb(0, 17, 82)",
@@ -59,6 +80,14 @@ export const BackgroundGradientAnimation = ({
   }, []);
 
   useEffect(() => {
+    /**
+     * Updates the position of the interactive gradient background
+     * (only if interactive is true) by moving it towards the target
+     * position (tgX, tgY). The position is updated by moving curX and
+     * curY towards tgX and tgY respectively, and then setting the
+     * transform style of the interactive element to the new position.
+     * If interactiveRef.current is null, this function does nothing.
+     */
     function move() {
       if (!interactiveRef.current) {
         return;
@@ -73,6 +102,13 @@ export const BackgroundGradientAnimation = ({
     move();
   }, [tgX, tgY]);
 
+  /**
+   * Handles the mouse move event on the interactive gradient background
+   * by updating the target position (tgX, tgY) of the gradient background
+   * to the current mouse position relative to the interactive element.
+   * If interactiveRef.current is null, this function does nothing.
+   * @param {React.MouseEvent<HTMLDivElement>} event - The mouse move event
+   */
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
       const rect = interactiveRef.current.getBoundingClientRect();
