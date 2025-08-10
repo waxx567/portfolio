@@ -2,6 +2,12 @@
 import React from "react";
 import { PinContainer } from "./3d-pin";
 
+/**
+ * A demo component that renders a 3D pin container with a perspective effect.
+ * The component is animated when the user scrolls the page.
+ *
+ * @returns A React component that renders a 3D pin container with a perspective effect.
+ */
 export function AnimatedPinDemo() {
   return (
     <div className="h-[40rem] w-full flex items-center justify-center ">

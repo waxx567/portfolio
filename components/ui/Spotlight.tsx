@@ -6,6 +6,17 @@ type SpotlightProps = {
   fill?: string;
 };
 
+/**
+ * A spotlight component that renders an SVG with a blurred, white ellipse.
+ * The component is positioned absolutely and has a pointer-events-none style.
+ * The component is intended to be used as a child of a parent element with
+ * position: relative, and should be styled with a position: absolute CSS rule.
+ *
+ * @param className - The class name to apply to the outermost element of the
+ * component.
+ * @param fill - The fill color of the ellipse. Defaults to white.
+ * @returns A JSX element that renders the spotlight.
+ */
 export const Spotlight = ({ className, fill }: SpotlightProps) => {
   return (
     <svg

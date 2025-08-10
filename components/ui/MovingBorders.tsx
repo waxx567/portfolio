@@ -10,6 +10,19 @@ import {
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * A button component with a moving border effect.
+ *
+ * @param borderRadius the border radius of the button. Defaults to 1.75rem.
+ * @param children the children elements to render inside the button.
+ * @param as the component to use to render the button. Defaults to a button element.
+ * @param containerClassName the class name to apply to the outermost element of the component.
+ * @param borderClassName the class name to apply to the border element.
+ * @param duration the duration of the animation in milliseconds. Defaults to 5000.
+ * @param className the class name to apply to the innermost element of the component.
+ * @param otherProps any other props to pass to the button element.
+ * @returns a JSX element of the button component.
+ */
 export function Button({
   borderRadius = "1.75rem",
   children,
@@ -69,6 +82,20 @@ export function Button({
   );
 }
 
+/**
+ * A component that renders a moving border.
+ *
+ * @param {React.ReactNode} children - The children to render inside the border.
+ * @param {number} [duration=2000] - The duration of the border animation in milliseconds.
+ * @param {string} [rx] - The x-radius of the border.
+ * @param {string} [ry] - The y-radius of the border.
+ * @param {Object} [otherProps] - Any additional props to apply to the outermost element of the component.
+ * @returns A JSX element that renders a moving border.
+ * @example
+ * <MovingBorder duration={4000}>
+ *   <div>My content</div>
+ * </MovingBorder>
+ */
 export const MovingBorder = ({
   children,
   duration = 2000,
