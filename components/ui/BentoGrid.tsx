@@ -14,6 +14,29 @@ import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../ui/MagicButton";
 
+/**
+ * A component that renders a section containing a grid of items.
+ *
+ * This component uses a CSS grid to display a collection of items passed as
+ * children. The grid is responsive, with a single column on small screens,
+ * 6 columns on medium-sized screens, and 5 columns on large screens. The
+ * distance between rows is 4rem on small screens, and 8rem on larger screens.
+ *
+ * @param className - The CSS class name(s) to apply to the outermost element of
+ * the component.
+ * @param children - The React children to render within the grid.
+ * @returns A JSX element that renders a section containing a CSS grid of items.
+ * @example
+ * <BentoGrid>
+ *   <BentoGridItem>
+ *     {/* item content */}
+ *   </BentoGridItem>
+ *   <BentoGridItem>
+ *     {/* item content */}
+ *   </BentoGridItem>
+ *   {/* add more items here */}
+ * </BentoGrid>
+ */
 export const BentoGrid = ({
   className,
   children,
