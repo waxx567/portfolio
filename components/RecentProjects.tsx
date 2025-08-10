@@ -4,6 +4,15 @@ import { projects } from '@/data'
 import React from 'react'
 import { PinContainer } from './ui/3d-pin'
 
+/**
+ * A reusable component for rendering a section with a heading and multiple cards.
+ *
+ * Each card contains a title, description, and image.
+ *
+ * The component uses the {@link https://www.framer.com/docs/animate-presence/|Animate Presence} library to animate the cards in and out.
+ *
+ * @returns A React component that renders a section with a heading and multiple cards.
+ */
 const RecentProjects = () => {
   return (
     <div className='py-20' id="projects">
