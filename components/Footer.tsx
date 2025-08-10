@@ -3,6 +3,16 @@ import MagicButton from './ui/MagicButton'
 import { FaLocationArrow } from 'react-icons/fa6'
 import { socialMedia } from "@/data"
 
+/**
+ * Footer component renders the footer section of the page.
+ *
+ * The footer contains a heading with a call to action, a description, 
+ * an email link with a MagicButton component, and social media icons.
+ * It also displays copyright information.
+ *
+ * @returns A JSX element representing the footer section.
+ */
+
 const Footer = () => {
   return (
     <footer className='w-full pt-20 pb-10 mb-[50px] md:mb-5' id='contact'>
