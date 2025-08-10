@@ -4,6 +4,18 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
+/**
+ * A canvas that renders a dot matrix with a reveal animation.
+ *
+ * The component is a wrapper around the {@link DotMatrix} component.
+ *
+ * @param {number} [animationSpeed=0.4] - The speed of the animation (0.1 - slower, 1.0 - faster)
+ * @param {number[]} [opacities=[0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1]] - The opacities of the dots
+ * @param {number[][]} [colors=[[0, 255, 255]]] - The colors of the dots
+ * @param {string} [containerClassName] - The class name to add to the container
+ * @param {number} [dotSize=3] - The size of the dots
+ * @param {boolean} [showGradient=true] - Whether to show a gradient background
+ */
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
@@ -57,6 +69,30 @@ interface DotMatrixProps {
   center?: ("x" | "y")[];
 }
 
+/**
+ * A component that renders a canvas with a dot matrix animation.
+ *
+ * The component renders a canvas with a dot matrix animation. The animation
+ * is defined by the `shader` prop, which is a string that is used to generate
+ * the animation. The `colors` prop is an array of colors that are used for the
+ * animation. The `opacities` prop is an array of opacities that are used for
+ * the animation. The `totalSize` prop is the total size of the dot matrix, and
+ * the `dotSize` prop is the size of each dot.
+ *
+ * The `center` prop is an array of strings that specify which axis to center
+ * the dot matrix on. The options are "x" and "y". If the prop is not provided,
+ * the dot matrix will not be centered.
+ *
+ * The component returns a `Shader` component from the `@react-three/drei`
+ * library.
+ *
+ * @param {number[][]} colors - The colors of the dots
+ * @param {number[]} opacities - The opacities of the dots
+ * @param {number} totalSize - The total size of the dot matrix
+ * @param {number} dotSize - The size of each dot
+ * @param {string} shader - The shader code for the animation
+ * @param {string[]} center - The axis to center the dot matrix on
+ */
 const DotMatrix: React.FC<DotMatrixProps> = ({
   colors = [[0, 0, 0]],
   opacities = [0.04, 0.04, 0.04, 0.04, 0.04, 0.08, 0.08, 0.08, 0.08, 0.14],
@@ -181,6 +217,13 @@ type Uniforms = {
     type: string;
   };
 };
+/**
+ * A hook that creates a THREE.ShaderMaterial from a GLSL source.
+ * It will update the material's uniforms whenever the uniforms object changes.
+ *
+ * @param {{ source: string; hovered?: boolean; maxFps?: number; uniforms: Uniforms; }} props
+ * @returns {JSX.Element}
+ */
 const ShaderMaterial = ({
   source,
   uniforms,
@@ -289,6 +332,17 @@ const ShaderMaterial = ({
   );
 };
 
+/**
+ * A React component that renders a shader material within a
+ * react-three-fiber canvas.
+ *
+ * @param source The source code for the shader.
+ * @param uniforms An object containing the uniforms for the shader.
+ * @param maxFps The maximum frames per second for the shader. Defaults to 60.
+ *
+ * @returns A JSX element representing the Canvas component with the
+ *   shader material.
+ */
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
   return (
     <Canvas className="absolute inset-0  h-full w-full">
